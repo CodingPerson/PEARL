@@ -1,12 +1,8 @@
 # Model Name
 <h5 align="center">PEARL</h5>
 
-
-
-
-
-
-
+## Data sets
+We provide all our data sets in `data/datasets/`, which include profession data set, hobby data set and 20News data set.
 ## Environment
 We used python=3.6, torch-1.4.0, cudatoolkit=10.0. \
 Other packages can be installed via `pip install -r requirements.txt`.
@@ -26,7 +22,6 @@ These instructions will get you running the codes of PEARL.
 
 #### Run on New Datasets
 Our method can be easily applied to new datasets, to do that: \
-&nbsp;1.Prepare an utterance corpus `dataset.txt` with attribute values `tlabels.txt` and an attribute value name file `classes.txt` under `data/datasets` folder.
-1. Place the new dataset in `data/datasets` folder, following the instructions.
+1. Prepare an utterance corpus `dataset.txt` with attribute values `tlabels.txt` and an attribute value name file `classes.txt` under `data/datasets` folder.
 
-
+2. Follow the reproduce steps.
