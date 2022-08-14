@@ -369,7 +369,6 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
     #         bitem_doc_fre_file.write(str(bitem_fre) + ' ')
     #     bitem_doc_fre_file.write('\n')
     # bitem_doc_fre_file.close()
-    # 每个文档中单词与类的对应比例
     # class_partition = [0 for t in range(72)]
     # for m in range(len(documet_token_cls_ids)):
     #     #     word_id = [0 for t in range(72)]
@@ -388,7 +387,7 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
         for id in documet_token_cls_ids[m]:
             word_id[id] = word_id[id] + 1
         doc_word_to_class.append(np.array(word_id))
-    #运行脚本
+
     for e in range(20):
         print(os.system('../src/btm est 72 '+str(len(vocab_lines))+' '+'0.69 0.01 50 100 ../data/datasets/profession/doc_wids.txt ../data/datasets/profession/model/ ../data/datasets/profession/class_word_similarity.txt '+str(bitem_class_similarity.shape[0])))
         print(os.system('../src/btm inf sum_b 72 ../data/datasets/profession/doc_wids.txt ../data/datasets/profession/model/ ../data/datasets/profession/model/bitem_doc_frequency.txt' ))
