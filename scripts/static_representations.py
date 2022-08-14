@@ -16,8 +16,8 @@ from utils import INTERMEDIATE_DATA_FOLDER_PATH, MODELS, tensor_to_numpy
 
 from utils import feature_select
 
-punctuation_map = dict((ord(char), None) for char in string.punctuation)  # 引入标点符号，为下步去除标点做准备
-s = nltk.stem.SnowballStemmer('english')  # 在提取词干时,语言使用英语,使用的语言是英语
+punctuation_map = dict((ord(char), None) for char in string.punctuation)
+s = nltk.stem.SnowballStemmer('english')
 def prepare_sentence(tokenizer, text):
     # setting for BERT
     model_max_tokens = 512
@@ -40,7 +40,7 @@ def prepare_sentence(tokenizer, text):
 
     for index, token in enumerate(tokenized_text + [None]):
         if token is not None:
-            ##将单词的原生单词和前后缀分开
+
             tokens = tokenizer.wordpiece_tokenizer.tokenize(token) ##
         if token is None or len(tokenids_chunk) + len(tokens) > max_tokens:
             tokenids_chunks.append([prepare_sentence.sos_id] + tokenids_chunk + [prepare_sentence.eos_id])
@@ -110,13 +110,13 @@ def estimate_static(vocab, vocab_min_occurrence):
     return static_word_representation, vocab_words, vocab_occurrence
 
 def stem_count(text):
-    l_text = text.lower()     #全部转化为小写以方便处理
-    without_punctuation = l_text.translate(punctuation_map)    #去除文章标点符号
-    tokens = nltk.word_tokenize(without_punctuation)        #将文章进行分词处理,将一段话转变成一个list
-    without_stopwords = [w for w in tokens if not w in stopwords.words('english')]    #去除文章的停用词
+    l_text = text.lower()
+    without_punctuation = l_text.translate(punctuation_map)
+    tokens = nltk.word_tokenize(without_punctuation)
+    without_stopwords = [w for w in tokens if not w in stopwords.words('english')]
     cleaned_text = []
     for i in range(len(without_stopwords)):
-        cleaned_text.append(without_stopwords[i])    #提取词干
+        cleaned_text.append(without_stopwords[i])
     return " ".join(cleaned_text)
 
 def main(args):

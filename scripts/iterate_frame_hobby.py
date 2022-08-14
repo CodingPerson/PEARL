@@ -1,5 +1,5 @@
 
-#测试的主要函数
+
 import argparse
 import copy
 import gc
@@ -26,7 +26,7 @@ from utils import (INTERMEDIATE_DATA_FOLDER_PATH, MODELS,
                    cosine_similarity_embedding, cosine_similarity_embeddings,
                    evaluate_predictions, tensor_to_numpy, DATA_FOLDER_PATH, ndcg_at_k)
 
-#标准化函数
+
 def MinmaxNormalization(mylist):
     if len(mylist) == 1:
         return np.array([1])
@@ -37,7 +37,7 @@ def MinmaxNormalization(mylist):
         new_list.append((x-min)/(max-min))
     return np.array(new_list)
 
-#对所有的关键词进行汇总
+
 def CountWords_Embeddings(document_statics,document_words,static_word_representations):
     words_id_field = []
     words_embeddings_field=[]
@@ -49,7 +49,7 @@ def CountWords_Embeddings(document_statics,document_words,static_word_representa
     return words_id_field,words_embeddings_field
 
 
-#主函数
+
 def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,attention_mechanism):
     inter_data_dir = os.path.join(INTERMEDIATE_DATA_FOLDER_PATH, dataset_name)
     static_repr_path = os.path.join(inter_data_dir, f"static_repr_lm-{lm_type}-{layer}.pk")
@@ -64,24 +64,24 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
         dictionary = pickle.load(f)
         document_representations = dictionary["document_representations"]
         class_representations = dictionary["class_representations"]
-        #类名表征
+
         static_class_representations = dictionary["static_class_representations"]
-        #文档中关键词的id集合
+
         document_statics = dictionary["document_statics"]
         class_words = dictionary["class_words"]
-        #文档中关键词的动态表征集合
+
         document_context=dictionary["document_context"]
-        #文档中的选取的关键词
+
         document_words = dictionary['document_key_tokens']
-        #文档中关键词权重
+
         document_word_weights = dictionary['document_tokens_weights']
-        #文档中关键词表征
+
         document_word_embeddings=dictionary['document_tokens_embeddings']
-        #文档中所有的关键词
+
         document_all_words = dictionary['document_all_tokens']
 
     epoch = 60
-    #初始化
+
     cur_class_representations=[[class_representations[i]] for i in range(len(class_representations))]
 
     finished_class = [i for i in range(len(class_representations))]
@@ -92,16 +92,15 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
     for i in range(len(class_words)):
         for j in class_words[i]:
             exist_words.append(j)
-    #因为迭代框架选取类关键词是从全局词汇中选取的，所以，我们需要对文档中所有关键词的id和embedding进行汇总
+
     words_id_field,words_embedding_field=CountWords_Embeddings(document_statics,document_words,static_word_representations)
     start = time.time()
     for itra in range(epoch):
-        print("迭代次数："+str(itra))
+        print("iteration num ："+str(itra))
         if len(finished_class) == 0 and len(finished_document) == 0:
-            print('文档迭代结束，框架迭代结束！！！！')
             break
         if len(finished_class) == 0:
-            print("类别不再迭代！")
+            print("class stop ！")
 
 
         for i in range(len(class_representations)):
@@ -118,7 +117,6 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
 
 
 
-        #采用初始化的类名表征进行类别关键词选取与权重计算
         for i in range(len(static_class_representations)):
             cluster_similarities.append(cosine_similarity_embeddings([static_class_representations[i]], np.array(words_embedding_field)))
             cluster_nearest_words.append(np.argsort(-np.array(cosine_similarity_embeddings([static_class_representations[i]], np.array(words_embedding_field))), axis=1))
@@ -140,7 +138,7 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
 
             new_index = 0
             for j in range(len(new_class_words)):
-                #这里是保证 每次选择的单词不会出现重复的情况
+
                 if vocab_words[words_id_field[new_class_words[j]]] not in exist_words:
                     new_index=new_class_words[j]
                     cur_index[i] = new_index
@@ -172,7 +170,7 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
 
         cluster_similarities = []
         cluster_nearest_words = []
-        # 采用初始化的类名表征进行类别关键词选取与权重计算
+
         for i in range(len(static_class_representations)):
             cluster_similarities.append(cosine_similarity_embeddings([class_representations[i]], np.array(words_embedding_field)))
             cluster_nearest_words.append(np.argsort(-np.array(cosine_similarity_embeddings([class_representations[i]], np.array(words_embedding_field))),axis=1))
@@ -184,7 +182,7 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
             new_class_words=cluster_nearest_words[i][0][0:length]
             num = 0
             for j in range(len(new_class_words)):
-                #这里是保证 每次选择的单词不会出现重复的情况
+
                 if vocab_words[words_id_field[new_class_words[j]]] not in class_words[i]:
                     num = num+1
                     if num >= length/4:
@@ -205,7 +203,6 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
         # cluster_similarities = []
         # cluster_nearest_words = []
         #
-        # # 采用初始化的类名表征进行类别关键词选取与权重计算
         # for i in range(len(static_class_representations)):
         #     cluster_similarities.append(cosine_similarity_embeddings([static_class_representations[i]], np.array(words_embedding_field)))
         #     cluster_nearest_words.append(np.argsort(-np.array(cosine_similarity_embeddings([static_class_representations[i]], np.array(words_embedding_field))),axis=1))
@@ -245,7 +242,7 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
                                                               document_context[i],
                                                               document_all_words[i],
                                                               document_statics[i],
-                                                              45)
+                                                              60)
                     new_document_words.append(tokens)
                     new_document_representation.append(document_representation)
                     new_token_embeddings.append(token_embeddings)
@@ -260,9 +257,8 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
             document_token_embeddings=new_token_embeddings
             document_token_weights = new_token_weights
             documet_token_cls_ids=new_cls_ids
-            print('可进行迭代的文档的个数为'+str(len(finished_document)))
             break
-    # 我们需要将document_tokens写入文件
+
     class_word_similarity_file = open('../data/datasets/hobby/class_word_similarity.txt', 'w',encoding='utf-8')
     document_keywords_file = open('../data/datasets/hobby/document_keywords.txt', 'w', encoding='utf-8')
     bitem_doc_fre_file = open('../data/datasets/hobby/model/bitem_doc_frequency.txt', 'w', encoding='utf-8')
@@ -271,10 +267,10 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
         document_keywords_file.write(' '.join(list(document)))
         document_keywords_file.write('\n')
     document_keywords_file.close()
-    #在运行脚本之前，存储中间数据,也就是每个类别与单词静态表征的相似度,我们要注意，这个相似度的计算必须按照indexDocs中所规定的word id来计算
+
     os.system('python indexDocs.py ../data/datasets/hobby/document_keywords.txt ../data/datasets/hobby/doc_wids.txt ../data/datasets/hobby/voca.txt')
     all_document_words=[]
-    # #顺序读取字典中的单词
+
     vocab_file = open('../data/datasets/hobby/voca.txt','r')
     vocab_lines = vocab_file.readlines()
     for vocab_line in vocab_lines:
@@ -284,12 +280,12 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
         for token in document_words[i]:
             all_document_word_emb[i].append(static_word_representations[word_to_index[token]])
 
-    #首先计算出bitem表征
+
     doc_bitems_embeddings_ids = [[] for i in range(len(tokenization_info))]
     bitem_class_similarity = []
     doc_bitem_similarity = [[] for i in range(len(document_words))]
     all_doc_bitem_fre = [[] for i in range(len(tokenization_info))]
-    # documennt表征和类表征的相似度
+
     doc_to_class_similarity=[[] for i in range(len(tokenization_info))]
     t=0
     for document in tqdm(document_words):
@@ -366,15 +362,15 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
     #         class_word_similarity_file.write(str(similarity) + ' ')
     #     class_word_similarity_file.write('\n')
     # class_word_similarity_file.close()
-    #执行python 程序，生成bitem，并计算bitem出现在某个文档中的频率，作为p(b|d)
+
     all_doc_bitems = [[] for i in range(len(tokenization_info))]
-    #对每个doument中的bitem进行生成
+
     t=0
     for document in document_words:
         for m in itertools.combinations(list(document),2):
             all_doc_bitems[t].append(list(m))
         t = t+1
-    # #对所有document中的bitem进行频率的计算
+
     bitems_doc_dict = dict()
     for i in range(len(all_doc_bitems)):
         for bitem  in all_doc_bitems[i]:
@@ -389,12 +385,12 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
                 bitems_doc_dict["".join(bitem[::-1])] = []
                 bitems_doc_dict["".join(bitem[::-1])].append(i)
 
-    #对每个document中的bitem进行频率的计算
+
     all_doc_bitem_fre = [[] for i in range(len(tokenization_info))]
     for i in range(len(all_doc_bitems)):
         document_bitems = all_doc_bitems[i]
         for bitem in document_bitems:
-            #这个地方如果，这么算，则对于doucment中相同的bitem，则会求和多次
+
             bitem_doc_fre = len([bitem for x in document_bitems if set(x) == set(bitem)])
             bitem_all_fre = len(bitems_doc_dict[''.join(bitem)])
             bitem_fre = float(bitem_doc_fre / bitem_all_fre)
@@ -422,15 +418,15 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
     # class_partition_file = open('../data/datasets/hobby/class_partition.txt', 'w', encoding='utf-8')
     # class_partition_file.write(' '.join(class_partition))
     # class_partition_file.close()
-    #运行脚本
-    for e in range(50):
+
+    for e in range(20):
         print(os.system('../src/btm est 150 '+str(len(vocab_lines))+' '+'0.33 0.01 100 100 ../data/datasets/hobby/doc_wids.txt ../data/datasets/hobby/model/ ../data/datasets/hobby/class_word_similarity.txt '+str(bitem_class_similarity.shape[0])))
         print(os.system('../src/btm inf sum_b 150 ../data/datasets/hobby/doc_wids.txt ../data/datasets/hobby/model/ ../data/datasets/hobby/model/bitem_doc_frequency.txt'))
         cosine_similarities = np.loadtxt('../data/datasets/hobby/model/k150.pz_d')
         # cosine_similarities = []
         # for doc_bitem in doc_to_class_similarity:
         #     cosine_similarities.append(sum(doc_bitem))
-        #每个文档中单词与类的对应比例
+
         doc_word_to_class=[]
         for m in range(len(documet_token_cls_ids)):
             word_id = [0 for t in range(150)]
@@ -578,8 +574,6 @@ def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,atten
                 class_word_similarity_file.write(str(similarity) + ' ')
             class_word_similarity_file.write('\n')
         class_word_similarity_file.close()
-    print('时间总和：')
-    print(time.time() - start)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
