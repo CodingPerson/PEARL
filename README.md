@@ -2,26 +2,25 @@
 <h5 align="center">PEARL</h5>
 
 ## Data sets
-We provide all our data sets in `data/datasets/`, which include profession data set, hobby data set and 20News data set.
+We provide all data sets (profession data set, hobby data set, and 20News data set [1]) in the folder `data/datasets/`.
+It is noted that the profession and hobby data sets are obtained from the authors [2].
+
 ## Environment
-We used python=3.6, torch-1.4.0, cudatoolkit=10.0. \
-Other packages can be installed via `pip install -r requirements.txt`.
+python=3.6, torch=1.4.0, cudatoolkit=10.0. 
+Other packages can be installed via the command `pip install -r requirements.txt`.
 
-## Getting Started
-These instructions will get you running the codes of PEARL.
-### Pre-processing the data
+## Reproduce
+### Preprocess the profession data set via the following commands.
 
-    CUDA_VISIBLE_DEVICES = [gpu_id] python static_representations.py --dataset_name [dataset_name] \
-    CUDA_VISIBLE_DEVICES = [gpu_id] python class_oriented_document_representations.py --dataset_name [dataset_name]
+    CUDA_VISIBLE_DEVICES = [gpu_id] python static_representations.py --dataset_name profession
+    CUDA_VISIBLE_DEVICES = [gpu_id] python class_oriented_document_representations.py --dataset_name profesion
 
-### Run PEARL
+	Similarly, the hobby (20News) data set can be preprocessed by replacing the profession as hobby(20News).
+### Run the framework PEARL on the profession data set via the following command.
 
-    python iterate_frame_profession.py 
-    python iterate_frame_hobby.py 
-    python iterate_frame_20News.py
+    python iterate_frame_profession.py
+	
+	Similarly, PEARL can run on the hobby (20News) data set via the command "python iterate_frame_hobby.py (iterate_frame_20News.py)"
 
-#### Run on New Datasets
-Our method can be easily applied to new datasets, to do that: \
-1. Prepare an utterance corpus `dataset.txt` with attribute values `tlabels.txt` and an attribute value name file `classes.txt` under `data/datasets` folder.
-
-2. Follow the reproduce steps.
+[1] Lang K. Newsweeder. Learning to filter netnews. Machine Learning Proceedings 1995, 331-339.
+[2] Tigunova A, Yates A, Mirza P, et al. CHARM: Inferring personal attributes from conversations. EMNLP'20, 5391-5404.
