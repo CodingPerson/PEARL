@@ -1,5 +1,5 @@
 # Model Name
-<h5 align="center">PEARL</h5>
+<h2 align="center">PEARL</h2>
 
 ## Data sets
 We provide all data sets (profession data set, hobby data set, and 20News data set [1]) in the folder `data/datasets/`.
