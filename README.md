@@ -1,4 +1,4 @@
-# PEARL
+# The Framework PEARL
 ## Data sets
 We provide all data sets (profession data set, hobby data set, and 20News data set [1]) in the folder `data/datasets/`.
 
@@ -15,7 +15,7 @@ Other packages can be installed via the command `pip install -r requirements.txt
     CUDA_VISIBLE_DEVICES = [gpu_id] python static_representations.py --dataset_name profession
     CUDA_VISIBLE_DEVICES = [gpu_id] python utterance_word_representations.py --dataset_name profesion
 
-Similarly, the hobby (resp. 20News) data set can be preprocessed by replacing "profession" as "hobby" (resp. "20News").
+Similarly, PEARL can run on the hobby (resp. 20News) data set via the command "python iterate_frame_hobby.py" (resp. "python iterate_frame_20News.py").
 ### Run the framework PEARL on the profession data set:
 
     python iterate_frame_profession.py
