@@ -52,15 +52,15 @@ def CountWords_Embeddings(document_statics,document_words,static_word_representa
 
 def main(dataset_name, confidence_threshold ,random_state ,lm_type ,layer ,attention_mechanism):
     inter_data_dir = os.path.join(INTERMEDIATE_DATA_FOLDER_PATH, dataset_name)
-    static_repr_path = os.path.join(inter_data_dir, f"static_repr_lm-{lm_type}-{layer}.pk")
+    static_repr_path = os.path.join(inter_data_dir, f"static_repr_lm-bbu.pk")
     with open(static_repr_path, "rb") as f:
         vocab = pickle.load(f)
         static_word_representations = vocab["static_word_representations"]
         word_to_index = vocab["word_to_index"]
         vocab_words = vocab["vocab_words"]
-    with open(os.path.join(inter_data_dir, f"tokenization_lm-{lm_type}-{layer}.pk"), "rb") as f:
+    with open(os.path.join(inter_data_dir, f"tokenization_lm-bbu.pk"), "rb") as f:
         tokenization_info = pickle.load(f)["tokenization_info"]
-    with open(os.path.join(INTERMEDIATE_DATA_FOLDER_PATH, dataset_name, f"document_repr_lm-bbu-12-iterate_1_1-300.pk"), "rb") as f:
+    with open(os.path.join(INTERMEDIATE_DATA_FOLDER_PATH, dataset_name, f"document_repr_lm-bbu.pk"), "rb") as f:
         dictionary = pickle.load(f)
         document_representations = dictionary["document_representations"]
         class_representations = dictionary["class_representations"]
