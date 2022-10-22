@@ -5,3 +5,12 @@ scikit-learn
 sentencepiece=0.1.91
 transformers
 tensorboardX
+nltk
+os
+sys
+collections
+itertools
+argparse
+subprocess
+pickle
+
