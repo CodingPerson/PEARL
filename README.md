@@ -5,7 +5,7 @@ We provide all data sets (profession data set, hobby data set, and 20News data s
 It is noted that the profession and hobby data sets are obtained from the authors [2].
 
 ## Environment
-python=3.6, torch=1.4.0, cudatoolkit=10.0. 
+python=3.6, pytorch=1.4.0, cudatoolkit=10.0. 
 
 Other packages can be installed via the command `pip install -r requirements.txt`.
 
