@@ -14,7 +14,7 @@ Other packages can be installed via the command `pip install -r requirements.txt
 | Corpus Domain | News | News |
 | Attribute Values | 71 | 149 |
 | User Utterances | 5747 | 5787 |
-| Used By | [CHARM]([https://arxiv.org/abs/2010.12794](https://aclanthology.org/2020.emnlp-main.434/))  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)| [CHARM]([https://arxiv.org/abs/2010.12794](https://aclanthology.org/2020.emnlp-main.434/))  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) |
+| Used By | [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)| [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) |
 
 ## Reproduce
 ### Preprocess the profession data set:
