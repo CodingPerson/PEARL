@@ -6,8 +6,8 @@ It is noted that the profession and hobby data sets are obtained from the author
 
 ## Environment
 
-python=3.6, pytorch=1.4.0, cudatoolkit=10.0. 
-GPU：NVIDIA Geforce GTX 3090  CPU：Inter i9-10900X
+python=3.6, pytorch=1.4.0, cudatoolkit=10.0.                                                    
+GPU：NVIDIA Geforce GTX 3090   CPU：Inter i9-10900X                                  
 
 Other packages are as follow, which can be installed via the command `pip install -r requirements.txt`.
 ```
