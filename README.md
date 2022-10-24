@@ -41,7 +41,7 @@ Weakly supervised text classification dataset
 
 PEARL is also tested on weakly supervised text classification task to verify its universality, flexibility and effectiveness.
 | | 20News |
-| --- | :-------------: | :-------------: |
+| --- | :-------------: |
 | Classes | 5 |
 | Documents | 17871 |
 | Used By | [X-Class](https://arxiv.org/abs/2010.12794)|
