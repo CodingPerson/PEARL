@@ -34,20 +34,30 @@ Liabraries are listed as follow, which can be installed via the command `pip ins
 Data sets for the personal attribute prediction task
 
 We follow the same task setting as previous personal attribute prediction papers[2-4], where attribute values are NOT explicitly mentioned in utterances and the given candidate attribute values are ranked based on the underlying semantics of utterances.
-|     | Profession | Hobby |
-| --- | :-------------: | :-------------: |
-| Attribute values | 71 | 149 |
-| User utterances | 5747 | 5787 |
-| Used by | [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)| [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) |
+
+--------------------------------------------------------------------------------
+
+​                                   Profession                       Hobby    
+
+Attribute values             71                                149 
+User utterances          5747                              5787
+Used by               [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)        [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 A data set for the weakly supervised text classification
 
 Note that PEARL is tested on the weakly supervised text classification task to verify its universality, flexibility and effectiveness.
-| | 20News |
-| --- | :-------------: |
-| Classes | 5 |
-| Documents | 17871 |
-| Used by | [X-Class](https://arxiv.org/abs/2010.12794)|
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+​                                   20News
+Classes                           5 
+Documents               17871 
+Used by                     [X-Class](https://arxiv.org/abs/2010.12794)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Reproduce
 ### Preprocess the profession data set:
 
