@@ -9,13 +9,12 @@ python=3.6, pytorch=1.4.0, cudatoolkit=10.0.
 
 Other packages can be installed via the command `pip install -r requirements.txt`.
 
-|  | Profession | Hobby | 20News 
-| --- | :-------------: | :-------------: | :-------------: | 
-| Corpus Domain | News | News | News |
-| Class Criterion | Topics | Topics | Topics |
-| # of Classes | 4 | 5 | 5 |
-| # of Documents | 120,000 | 17,871 | 13,081 |
-| Imbalance | 1.0 | 2.02 | 16.65 |
+|  | Profession | Hobby |
+| --- | :-------------: | :-------------: |
+| Corpus Domain | News | News |
+| Attribute Values | 71 | 149 |
+| User Utterances | 5747 | 5787 |
+| Used By | [CHARM]([https://arxiv.org/abs/2010.12794](https://aclanthology.org/2020.emnlp-main.434/))  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)| [CHARM]([https://arxiv.org/abs/2010.12794](https://aclanthology.org/2020.emnlp-main.434/))  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) |
 
 ## Reproduce
 ### Preprocess the profession data set:
