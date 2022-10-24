@@ -10,7 +10,7 @@ python=3.6, pytorch=1.4.0, cudatoolkit=10.0.
 GPU：NVIDIA Geforce GTX 3090  CPU：Inter i9-10900X
 
 Other packages are as follow, which can be installed via the command `pip install -r requirements.txt`.
-   `
+```
     numpy
     scipy
     tqdm
@@ -26,7 +26,7 @@ Other packages are as follow, which can be installed via the command `pip instal
     argparse
     subprocess
     pickle
-    `
+```
 ## Datasets
 Personal attribute prediction datasets
 
