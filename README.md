@@ -6,11 +6,11 @@ It is noted that the profession and hobby data sets are obtained from the author
 
 ## Environment
 
-python=3.6/C++, pytorch=1.4.0, cudatoolkit=10.0.         
-              
-GPU：NVIDIA Geforce GTX 3090   CPU：Inter i9-10900X                                  
+Computational platform: PyTorch 1.4.0, NVIDIA Geforce GTX 3090 (GPU), Inter i9-10900X (CPU), CUDA Toolkit 10.0
 
-Other packages are as follow, which can be installed via the command `pip install -r requirements.txt`.
+Development language: Python 3.6/C++
+       
+Liabraries are listed as follow, which can be installed via the command `pip install -r requirements.txt`.
 ```
     numpy
     scipy
@@ -27,25 +27,27 @@ Other packages are as follow, which can be installed via the command `pip instal
     argparse
     subprocess
     pickle
+	cudatoolkit=10.0
+	pytorch==1.4.0
 ```
 ## Datasets
-Personal attribute prediction data sets
+Data sets for the personal attribute prediction task
 
 We follow the same task setting as previous personal attribute prediction papers[2-4], where attribute values are NOT explicitly mentioned in utterances and the given candidate attribute values are ranked based on the underlying semantics of utterances.
 |     | Profession | Hobby |
 | --- | :-------------: | :-------------: |
-| Attribute Values | 71 | 149 |
-| User Utterances | 5747 | 5787 |
-| Used By | [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)| [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) |
+| Attribute values | 71 | 149 |
+| User utterances | 5747 | 5787 |
+| Used by | [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)| [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) |
 
-Weakly supervised text classification data set
+A data set for the weakly supervised text classification
 
-PEARL is tested on weakly supervised text classification task to verify its universality, flexibility and effectiveness.
+Note that PEARL is tested on the weakly supervised text classification task to verify its universality, flexibility and effectiveness.
 | | 20News |
 | --- | :-------------: |
 | Classes | 5 |
 | Documents | 17871 |
-| Used By | [X-Class](https://arxiv.org/abs/2010.12794)|
+| Used by | [X-Class](https://arxiv.org/abs/2010.12794)|
 ## Reproduce
 ### Preprocess the profession data set:
 
