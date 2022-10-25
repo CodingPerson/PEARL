@@ -1,9 +1,4 @@
 # The Framework PEARL
-## Data sets
-We provide all data sets (profession data set, hobby data set, and 20News data set [1]) in the folder `data/datasets/`.
-
-It is noted that the profession and hobby data sets are obtained from the authors [2].
-
 ## Environment
 
 Computational platform: PyTorch 1.4.0, NVIDIA Geforce GTX 3090 (GPU), Inter i9-10900X (CPU), CUDA Toolkit 10.0
@@ -12,51 +7,27 @@ Development language: Python 3.6/C++
        
 Liabraries are listed as follow, which can be installed via the command `pip install -r requirements.txt`.
 ```
-    numpy
-    scipy
-    tqdm
-    scikit-learn
-    sentencepiece=0.1.91
-    transformers
-    tensorboardX
-    nltk
-    os
-    sys
-    collections
-    itertools
-    argparse
-    subprocess
-    pickle
-	cudatoolkit=10.0
-	pytorch==1.4.0
+numpy, scipy, tqdm, scikit-learn, sentencepiece=0.1.91, transformers, tensorboardX, nltk, os, sys, collections, itertools, argparse, subprocess, pickle, cudatoolkit=10.0, pytorch==1.4.0
 ```
-## Datasets
-Data sets for the personal attribute prediction task
+## Data sets
+We provide all the data sets (profession data set, hobby data set, and 20News data set) in the folder `data/datasets/`. 
+###Personal attribute prediction task
+Profession data set(obtained from the authors of [2])
+atribute values: 71; user utterances: 5747 
+used by the previous work: [CHARM](https://aclanthology.org/2020.emnlp-main.434/) [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) 
 
-We follow the same task setting as previous personal attribute prediction papers[2-4], where attribute values are NOT explicitly mentioned in utterances and the given candidate attribute values are ranked based on the underlying semantics of utterances.
+Hobby data set (obtained from the authors of [2])
+atribute values: 149; user utterances: 5787
+used by the previous work: [CHARM](https://aclanthology.org/2020.emnlp-main.434/) [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248) 
 
---------------------------------------------------------------------------------
+Note that we follow the same task setting as previous personal attribute prediction papers[2-4], where attribute values are NOT explicitly mentioned in utterances and the given candidate attribute values are ranked based on the underlying semantics of utterances.
 
-​                                   Profession                       Hobby                         
-
-Attribute values             71                                149     
-User utterances          5747                              5787   
-Used by               [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)        [CHARM](https://aclanthology.org/2020.emnlp-main.434/)  [DSCGN](https://dl.acm.org/doi/abs/10.1145/3487553.3524248)                    
-
------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-A data set for the weakly supervised text classification
+###Weakly supervised text classification task
+20News data set(obtained from [1])
+classes: 5; documents: 17871    
+used by the previous work: [X-Class](https://arxiv.org/abs/2010.12794) 
 
 Note that PEARL is tested on the weakly supervised text classification task to verify its universality, flexibility and effectiveness.
-
------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-​                                   20News    
-Classes                           5    
-Documents               17871    
-Used by                     [X-Class](https://arxiv.org/abs/2010.12794)             
-
------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Reproduce
 ### Preprocess the profession data set:
