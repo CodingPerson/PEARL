@@ -5,7 +5,7 @@ Computational platform: PyTorch 1.4.0, NVIDIA Geforce GTX 3090 (GPU), Inter i9-1
 
 Development language: Python 3.6/C++
        
-Liabraries are listed as follow, which can be installed via the command `pip install -r requirements.txt`.
+Libraries are listed as follow, which can be installed via the command `pip install -r requirements.txt`.
 ```
 numpy, scipy, tqdm, scikit-learn, sentencepiece=0.1.91, transformers, tensorboardX, nltk, os, sys, collections, itertools, argparse, subprocess, pickle, cudatoolkit=10.0, pytorch==1.4.0
 ```
